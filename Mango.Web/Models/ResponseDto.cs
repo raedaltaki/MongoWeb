@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Mongo.Web.Models
+namespace Mango.Web.Models
 {
 	public class ResponseDto
 	{
