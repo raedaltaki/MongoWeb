@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient();
-builder.Services.AddHttpClient<ICouponService, CouponService>():
+builder.Services.AddHttpClient<ICouponService, CouponService>();
 SD.CouponAPIBase = builder.Configuration["ServiceUrls:CouponAPI"];
 
 
