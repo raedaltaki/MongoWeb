@@ -9,7 +9,7 @@ using Mongo.Services.CouponAPI.Models.Dto;
 
 namespace Mongo.Services.CouponAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/coupon")]
     [ApiController]
     public class CouponAPIController : ControllerBase
     {
