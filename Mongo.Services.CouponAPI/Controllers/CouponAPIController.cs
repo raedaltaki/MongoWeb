@@ -123,7 +123,7 @@ namespace Mongo.Services.CouponAPI.Controllers
         }
 
         // DELETE api/values/5
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public ResponseDto Delete(int id)
         {
             try
