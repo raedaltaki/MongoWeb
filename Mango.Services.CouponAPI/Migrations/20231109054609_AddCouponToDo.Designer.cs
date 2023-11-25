@@ -2,17 +2,20 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Mongo.Services.CouponAPI.Data;
+using Mango.Services.CouponAPI.Data;
 
 #nullable disable
 
-namespace Mongo.Services.CouponAPI.Migrations
+namespace Mango.Services.CouponAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231109054609_AddCouponToDo")]
+    partial class AddCouponToDo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,22 +45,6 @@ namespace Mongo.Services.CouponAPI.Migrations
                     b.HasKey("CouponId");
 
                     b.ToTable("Coupons");
-
-                    b.HasData(
-                        new
-                        {
-                            CouponId = 1,
-                            CouponCode = "10OFF",
-                            DiscountAmount = 10.0,
-                            MinAmount = 20
-                        },
-                        new
-                        {
-                            CouponId = 2,
-                            CouponCode = "20OFF",
-                            DiscountAmount = 20.0,
-                            MinAmount = 40
-                        });
                 });
 #pragma warning restore 612, 618
         }

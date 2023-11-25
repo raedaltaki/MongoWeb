@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Mongo.Services.CouponAPI.Migrations
+namespace Mango.Services.CouponAPI.Migrations
 {
     /// <inheritdoc />
     public partial class AddCouponToDo : Migration

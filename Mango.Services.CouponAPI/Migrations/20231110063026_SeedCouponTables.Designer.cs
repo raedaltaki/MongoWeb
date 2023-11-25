@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Mongo.Services.CouponAPI.Data;
+using Mango.Services.CouponAPI.Data;
 
 #nullable disable
 
-namespace Mongo.Services.CouponAPI.Migrations
+namespace Mango.Services.CouponAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20231110063026_SeedCouponTables")]

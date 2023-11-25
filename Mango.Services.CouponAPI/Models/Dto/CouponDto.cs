@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Mongo.Services.CouponAPI.Models.Dto
+namespace Mango.Services.CouponAPI.Models.Dto
 {
 	public class CouponDto
 	{

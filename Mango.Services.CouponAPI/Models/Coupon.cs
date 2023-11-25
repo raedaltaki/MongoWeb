@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Mongo.Services.CouponAPI.Models
+namespace Mango.Services.CouponAPI.Models
 {
 	public class Coupon
 	{

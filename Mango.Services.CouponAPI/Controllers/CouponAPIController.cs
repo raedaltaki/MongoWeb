@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Mongo.Services.CouponAPI.Data;
-using Mongo.Services.CouponAPI.Models;
-using Mongo.Services.CouponAPI.Models.Dto;
+using Mango.Services.CouponAPI.Data;
+using Mango.Services.CouponAPI.Models;
+using Mango.Services.CouponAPI.Models.Dto;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace Mongo.Services.CouponAPI.Controllers
+namespace Mango.Services.CouponAPI.Controllers
 {
     [Route("api/coupon")]
     [ApiController]
