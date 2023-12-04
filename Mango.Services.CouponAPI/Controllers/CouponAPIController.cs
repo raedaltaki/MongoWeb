@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Mango.Services.CouponAPI.Data;
 using Mango.Services.CouponAPI.Models;
 using Mango.Services.CouponAPI.Models.Dto;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,6 +12,7 @@ namespace Mango.Services.CouponAPI.Controllers
 {
     [Route("api/coupon")]
     [ApiController]
+    [Authorize]
     public class CouponAPIController : ControllerBase
     {
         private readonly AppDbContext _db;
