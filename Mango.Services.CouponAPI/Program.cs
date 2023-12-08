@@ -2,9 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Mango.Services.CouponAPI;
 using Mango.Services.CouponAPI.Data;
-using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Mango.Services.CouponAPI.Extensions;
 
