@@ -1,5 +1,4 @@
 ﻿using Mango.Services.ShoppingCartAPI.Models.Dto;
-using Mongo.Services.ShoppingCartAPI.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
