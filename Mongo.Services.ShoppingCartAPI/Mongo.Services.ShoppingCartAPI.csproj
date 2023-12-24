@@ -24,24 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Models\" />
-    <None Remove="Models\Dto\" />
-    <None Remove="Data\" />
-    <None Remove="Controllers\" />
-    <None Remove="Extensions\" />
-    <None Remove="Service\" />
-    <None Remove="Service\IService\" />
-    <None Remove="Utility\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Models\Dto\" />
-    <Folder Include="Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="Service\" />
-    <Folder Include="Service\IService\" />
-    <Folder Include="Utility\" />
+    <ProjectReference Include="..\Mango.MessageBus\Mango.MessageBus.csproj" />
   </ItemGroup>
 </Project>
