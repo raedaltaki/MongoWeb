@@ -1,5 +1,5 @@
 ﻿using Azure.Messaging.ServiceBus;
-//using Mango.Services.EmailAPI.Message;
+using Mango.Services.EmailAPI.Message;
 using Mango.Services.EmailAPI.Models.Dto;
 using Mango.Services.EmailAPI.Services;
 using Newtonsoft.Json;
@@ -29,13 +29,13 @@ namespace Mango.Services.EmailAPI.Messaging
 
             emailCartQueue = _configuration.GetValue<string>("TopicAndQueueNames:EmailShoppingCartQueue");
             registerUserQueue = _configuration.GetValue<string>("TopicAndQueueNames:RegisterUserQueue");
-            //orderCreated_Topic = _configuration.GetValue<string>("TopicAndQueueNames:OrderCreatedTopic");
-            //orderCreated_Email_Subscription = _configuration.GetValue<string>("TopicAndQueueNames:OrderCreated_Email_Subscription");
+            orderCreated_Topic = _configuration.GetValue<string>("TopicAndQueueNames:OrderCreatedTopic");
+            orderCreated_Email_Subscription = _configuration.GetValue<string>("TopicAndQueueNames:OrderCreated_Email_Subscription");
 
             var client = new ServiceBusClient(serviceBusConnectionString);
             _emailCartProcessor = client.CreateProcessor(emailCartQueue);
             _registerUserProcessor = client.CreateProcessor(registerUserQueue);
-            //_emailOrderPlacedProcessor = client.CreateProcessor(orderCreated_Topic, orderCreated_Email_Subscription);
+            _emailOrderPlacedProcessor = client.CreateProcessor(orderCreated_Topic, orderCreated_Email_Subscription);
         }
 
         public async Task Start()
@@ -48,9 +48,9 @@ namespace Mango.Services.EmailAPI.Messaging
             _registerUserProcessor.ProcessErrorAsync += ErrorHandler;
             await _registerUserProcessor.StartProcessingAsync();
 
-            //_emailOrderPlacedProcessor.ProcessMessageAsync += OnOrderPlacedRequestReceived;
-            //_emailOrderPlacedProcessor.ProcessErrorAsync += ErrorHandler;
-            //await _emailOrderPlacedProcessor.StartProcessingAsync();
+            _emailOrderPlacedProcessor.ProcessMessageAsync += OnOrderPlacedRequestReceived;
+            _emailOrderPlacedProcessor.ProcessErrorAsync += ErrorHandler;
+            await _emailOrderPlacedProcessor.StartProcessingAsync();
         }
 
 
@@ -63,8 +63,8 @@ namespace Mango.Services.EmailAPI.Messaging
             await _registerUserProcessor.StopProcessingAsync();
             await _registerUserProcessor.DisposeAsync();
 
-            //await _emailOrderPlacedProcessor.StopProcessingAsync();
-            //await _emailOrderPlacedProcessor.DisposeAsync();
+            await _emailOrderPlacedProcessor.StopProcessingAsync();
+            await _emailOrderPlacedProcessor.DisposeAsync();
         }
 
         private async Task OnEmailCartRequestReceived(ProcessMessageEventArgs args)
@@ -87,25 +87,24 @@ namespace Mango.Services.EmailAPI.Messaging
 
         }
 
-        //private async Task OnOrderPlacedRequestReceived(ProcessMessageEventArgs args)
-        //{
-        //    //this is where you will receive message
-        //    var message = args.Message;
-        //    var body = Encoding.UTF8.GetString(message.Body);
+        private async Task OnOrderPlacedRequestReceived(ProcessMessageEventArgs args)
+        {
+            //this is where you will receive message
+            var message = args.Message;
+            var body = Encoding.UTF8.GetString(message.Body);
 
-        //    RewardsMessage objMessage = JsonConvert.DeserializeObject<RewardsMessage>(body);
-        //    try
-        //    {
-        //        //TODO - try to log email
-        //        await _emailService.LogOrderPlaced(objMessage);
-        //        await args.CompleteMessageAsync(args.Message);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-
-        //}
+            RewardsMessage objMessage = JsonConvert.DeserializeObject<RewardsMessage>(body);
+            try
+            {
+                //TODO - try to log reward message
+                await _emailService.LogOrderPlaced(objMessage);
+                await args.CompleteMessageAsync(args.Message);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
 
         private async Task OnUserRegisterRequestReceived(ProcessMessageEventArgs args)
         {
