@@ -2,7 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace Mongo.Services.ShoppingCartAPI.Extensions
+namespace Mongo.GatewaySolution.Extension
 {
     public static class WebApplicationBuilderExtensions
     {
